@@ -12,6 +12,8 @@ module.exports = {
     async getSearch(req, res){
         let searchKey = req.query.search;
 
+        searchKey.replace(" ", "%20");
+
         fetch(`${apiML}/sites/MLA/search?q=${searchKey}&limit=${limite}&attributes=results,filters`)
         .then(respuesta => respuesta.json())
         .then(respuesta => {
@@ -29,24 +31,27 @@ module.exports = {
         });
     },
 
-    //https://api.mercadolibre.com/categories/CATEGORY_ID?attributes=path_from_root
     async getItem(req, res){
         let _id = req.params.id;
 
         fetch(`${apiML}/items/${_id}?attributes=${infoNeeded}`)
         .then(respuesta => respuesta.json())
         .then(respuesta => {
+
+            if(respuesta.status == 404) return res.json({'err': 'ID de item inexistente'});
+            
             const datos = respuesta;
+            console.log(respuesta);
             var articulo = new Item(datos);
 
             fetch(`${apiML}/items/${_id}/description?attributes=plain_text`)
             .then(respuesta => respuesta.json())
             .then(respuesta => {
-                articulo.agregarDescripcion(respuesta.plain_text);
+                if(respuesta.plain_text)articulo.agregarDescripcion(respuesta.plain_text);
                 fetch(`${apiML}/categories/${datos.category_id}?attributes=path_from_root`)
                 .then(respuesta => respuesta.json())
                 .then(respuesta => {
-                    articulo.agregarCategorias(respuesta.path_from_root);
+                    if(respuesta.path_from_root)articulo.agregarCategorias(respuesta.path_from_root);
                     articulo.agregarAutor(miNombre);
 
                     return res.json(articulo.item);
@@ -96,13 +101,13 @@ class Item{
             'id': itemCrudo.id,
             'title': itemCrudo.title,
             'price': {
-                'amount': itemCrudo.available_quantity,
-                'currency': itemCrudo.currency_id,
-                'decimals': itemCrudo.price
+                'amount': itemCrudo.available_quantity || 0,
+                'currency': itemCrudo.currency_id || '',
+                'decimals': itemCrudo.price || 0
             },
-            'picture': itemCrudo.thumbnail,
-            'condition': itemCrudo.condition,
-            'free-shipping': itemCrudo.shipping.free_shipping,
+            'picture': itemCrudo.thumbnail || '',
+            'condition': itemCrudo.condition || '',
+            'free-shipping': itemCrudo.shipping ? itemCrudo.shipping.free_shipping : '',
             'description': "",
             'categories': []
         }
