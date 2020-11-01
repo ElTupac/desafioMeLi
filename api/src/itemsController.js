@@ -107,7 +107,7 @@ class Item{
             },
             'picture': itemCrudo.thumbnail || '',
             'condition': itemCrudo.condition || '',
-            'free-shipping': itemCrudo.shipping ? itemCrudo.shipping.free_shipping : '',
+            'free_shipping': itemCrudo.shipping ? itemCrudo.shipping.free_shipping : '',
             'description': "",
             'categories': []
         }

@@ -1,0 +1,53 @@
+.itemContainer{
+    width: 100%;
+    background-color: #fff;
+    margin-top: 1%;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.imgContainer{
+    position: relative;
+    margin: 1% 1%;
+    cursor: pointer;
+}
+
+.imgItem{
+    width: 160px;
+    height: 160px;
+}
+
+.infoContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 80%;
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+}
+
+.price{
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #333;
+    display: inline;
+    margin-bottom: 0;
+}
+
+.title{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1.1;
+    color: #333;
+    display: inline;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.freeShippingIcon{
+    height: 17px;
+    position: relative;
+    margin-left: 1%;
+}
