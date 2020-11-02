@@ -36,6 +36,4 @@ class NoResults extends Component{
     }
 }
 
-//this.props.searchKey
-
 export default NoResults;

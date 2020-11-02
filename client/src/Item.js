@@ -1,8 +1,8 @@
-//import React, {Component} from "react";
 import { Component } from 'react';
-import API_URL from './API_URL';
 import './Item.css';
 import Loading from './Loading';
+import NoItem from './NoItem';
+import API_URL from './API_URL';
 
 class Item extends Component{
     constructor(props){
@@ -27,6 +27,8 @@ class Item extends Component{
 
     render(){
         if(this.state.infoArticulo){
+            if(this.state.infoArticulo.err) return <NoItem wrongId={this.props.match.params.id}/>
+
             let data = this.state.infoArticulo;
             let categorias = '';
             if(data.item.categories.length > 0){

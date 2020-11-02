@@ -1,4 +1,4 @@
-.noResultsContainer{
+.noItemContainer{
     width: 90%;
     height: 200px;
     position: relative;
@@ -12,23 +12,27 @@
     display: flex;
 }
 
-.noResults2Container{
+.noItem2Container{
     position: relative;
     margin: 48px auto;
     display: flex;
     flex-direction: row;
 }
 
-.noResultsIconContainer{
+.noItemIconContainer{
     margin-right: 50px;
 }
 
-.noResultsInfoContainer{
+.noItemIconContainer img{
+    width: 100px;
+}
+
+.noItemInfoContainer{
     display: block;
     box-sizing: border-box;
 }
 
-.noResultsTitle{
+.noItemTitle{
     font-size: 24px;
     font-weight: 600;
     line-height: 1.08;
@@ -36,10 +40,10 @@
     margin-top: 10px;
 }
 
-.noResultsTitle strong{
+.noItemTitle strong{
     text-decoration: underline;
 }
 
-.noResultsCheck{
+.noItemCheck{
     color: #666;
 }

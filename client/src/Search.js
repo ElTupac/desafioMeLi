@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-//import {useLocation} from 'react-router-dom';
-import API_URL from './API_URL';
 import './Search.css';
 import ListItem from './ListItems';
 import NoResults from './NoResults';
 import Loading from './Loading';
+import API_URL from './API_URL';
 
 
 
