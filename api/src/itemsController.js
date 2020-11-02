@@ -1,10 +1,11 @@
 const fetch = require('node-fetch');
+require('dotenv').config();
 
-const apiML = 'https://api.mercadolibre.com';
-const limite = 4;
+const apiML = process.env.API_ML;
+const limite = process.env.LIMITE_ITEMS;
 const miNombre = {
-    'name': 'Nehuen',
-    'lastname': 'Covelo'
+    'name': process.env.AUTHOR_NAME,
+    'lastname': process.env.AUTHOR_LASTNAME
 };
 const infoNeeded = 'id,title,price,currency_id,available_quantity,thumbnail,condition,shipping,sold_quantity,category_id'
 
@@ -38,7 +39,7 @@ module.exports = {
         .then(respuesta => respuesta.json())
         .then(respuesta => {
 
-            if(respuesta.status == 404) return res.json({'err': 'ID de item inexistente'});
+            if(respuesta.status == 404 || respuesta.error == "resource not found") return res.json({'err': 'ID de item inexistente'});
             
             const datos = respuesta;
             var articulo = new Item(datos);
