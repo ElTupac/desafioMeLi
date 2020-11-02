@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import API_URL from './API_URL';
 import './Search.css';
 import ListItem from './ListItems';
+import NoResults from './NoResults';
+import Loading from './Loading';
 
 
 
@@ -29,7 +31,14 @@ class Search extends Component{
     }
 
     render(){
+        
         if(this.state.searchInfo){
+            if(!this.state.searchInfo.items.length){
+                let param = (new URL(document.location)).searchParams;
+                let searchKey = param.get('search');
+                return <NoResults searchKey={searchKey}/>;
+            }
+
             const data = this.state.searchInfo;
             var categorias = '';
             if(data.categories.length > 0){
@@ -51,7 +60,7 @@ class Search extends Component{
             )
         }else{
             //Poner un gif de "cargando"
-            return <div></div>
+            return <Loading/>
         }
     }
 }

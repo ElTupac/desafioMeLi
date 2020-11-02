@@ -35,5 +35,3 @@ class ListItem extends Component{
 }
 
 export default ListItem;
-
-//<Redirect to={`/items/${this.props.data.id}`}/>

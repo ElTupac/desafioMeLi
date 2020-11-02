@@ -1,0 +1,41 @@
+.noResultsContainer{
+    width: 90%;
+    height: 200px;
+    position: relative;
+    background-color: #fff;
+    left: 5%;
+    top: 50px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+    border-radius: 4px;
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.noResults2Container{
+    position: relative;
+    margin: 48px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.noResultsIconContainer{
+    margin-right: 50px;
+}
+
+.noResultsInfoContainer{
+    display: block;
+    box-sizing: border-box;
+}
+
+.noResultsTitle{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.08;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.noResultsTitle strong{
+    text-decoration: underline;
+}

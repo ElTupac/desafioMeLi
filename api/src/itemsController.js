@@ -41,7 +41,6 @@ module.exports = {
             if(respuesta.status == 404) return res.json({'err': 'ID de item inexistente'});
             
             const datos = respuesta;
-            console.log(respuesta);
             var articulo = new Item(datos);
 
             fetch(`${apiML}/items/${_id}/description?attributes=plain_text`)

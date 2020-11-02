@@ -1,0 +1,10 @@
+.loadingContainer{
+    height: 100px;
+    width: 100%;
+}
+
+.loadingContainer img{
+    width: 8%;
+    margin-top: 2%;
+    margin-left: 46%;
+}
